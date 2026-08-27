@@ -145,11 +145,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 153416209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92dc34d778306d440930709a223e0f8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8669cd4668bbcb948aeda57076331400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddAudio
-  audioClip1: {fileID: 8300000, guid: a409a7ecb06d9d644bd159cbe4007a85, type: 3}
-  audioClip2: {fileID: 8300000, guid: 3268671ca47542b439af3cde045a6467, type: 3}
+  audioClip1: {fileID: 8300000, guid: d723d4fab56b7d0448fedfa2e4607139, type: 3}
+  audioClip2: {fileID: 8300000, guid: bde2cda195981d443a98683e70ec83c6, type: 3}
   isMerge: 0
 --- !u!4 &153416211
 Transform:

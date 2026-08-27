@@ -61,7 +61,7 @@ namespace Practice
             myClip.SetData(samples.ToArray(), 0);
 
             //save audio
-            string path = Path.Combine(Application.dataPath, "MusicMaker/MusicAudio.wav");
+            string path = Path.Combine(Application.dataPath, "Practice/MusicMaker/MusicAudio.wav");
             bool success = WavUtility.Save(path, myClip);
 
             if (success)

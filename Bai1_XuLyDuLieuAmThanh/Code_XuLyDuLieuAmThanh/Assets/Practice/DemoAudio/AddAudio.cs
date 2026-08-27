@@ -32,7 +32,7 @@ namespace Practice
             myClip.SetData(sampleData, 0);
 
             //save audio
-            string path = Path.Combine(Application.dataPath, "DemoAudio/GeneratedTone.wav");
+            string path = Path.Combine(Application.dataPath, "Practice/DemoAudio/GeneratedTone.wav");
             bool success = WavUtility.Save(path, myClip);
 
             if (success)
@@ -52,26 +52,19 @@ namespace Practice
             float[] sampleMix = new float[duration];
 
             //-----------Start Question 2----------------
-            float maxSample = 0f;
-            for (int i = 0; i < duration; i++)
-            {
-                sampleMix[i] = (sampleAudio1[i] + sampleAudio2[i]);
-                if (maxSample < sampleMix[i])
-                {
-                    maxSample = sampleMix[i];
-                }
-            }
+            
 
-            for (int i = 0; i < duration; i++)
-            {
-                sampleMix[i] /= maxSample;
-            }
+
+
+
+
+
             //-----------End Question 2----------------
             AudioClip myClip = AudioClip.Create("MixAudio", sampleMix.Length, audioClip1.channels, audioClip1.frequency, false);
             myClip.SetData(sampleMix, 0);
 
             //save audio
-            string path = Path.Combine(Application.dataPath, "DemoAudio/myMixAudio.wav");
+            string path = Path.Combine(Application.dataPath, "Practice/DemoAudio/myMixAudio.wav");
 
             bool success = WavUtility.Save(path, myClip);
 

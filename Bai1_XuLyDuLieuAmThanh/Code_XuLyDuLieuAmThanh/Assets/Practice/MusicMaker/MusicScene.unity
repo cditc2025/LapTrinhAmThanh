@@ -145,13 +145,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 63166925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69444129c1a436f48946041e2f483eb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8be13213fa62e489e2306b7b69db3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicMaker
-  rightHandSheet: {fileID: 4900000, guid: 68868de315055884594dc8fde586634d, type: 3}
-  leftHandSheet: {fileID: 4900000, guid: 36553ecced95eb1479174deeb9fab139, type: 3}
-  bpm: 60
-  type: 1
+  rightHandSheet: {fileID: 4900000, guid: 473c4ca220d34bc468dc3ae4304ddf07, type: 3}
+  leftHandSheet: {fileID: 4900000, guid: 66044b482262ff64dae5adcd4687aa08, type: 3}
+  bpm: 65
+  type: 0
   tone: 1
 --- !u!4 &63166927
 Transform:
