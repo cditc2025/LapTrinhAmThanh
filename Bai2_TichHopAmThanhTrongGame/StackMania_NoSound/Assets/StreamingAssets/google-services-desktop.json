@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1058705644466",
+    "project_id": "jelly-crush-e9db2",
+    "storage_bucket": "jelly-crush-e9db2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058705644466:android:64b440599d56d4271162ab",
+        "android_client_info": {
+          "package_name": "com.jelly.blast.shooter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnRCzwrKpV-f2QU0hrf26iypfYdVBN9QY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

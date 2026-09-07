@@ -1,0 +1,226 @@
+{
+    "level": {
+        "difficulty": "brutal"
+    },
+    "block": {
+        "size": {
+            "x": 10,
+            "y": 6
+        },
+        "totalBlocks": 5,
+        "valueBlocks": [
+            {
+                "color": -1,
+                "typeBlock": 10,
+                "numOfBlocks": 100,
+                "valueGoldBlock": {
+                    "numOfGoldBlocks": 2
+                },
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 1,
+                "numOfBlocks": 40,
+                "size": {
+                    "x": 2,
+                    "y": 2
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 2,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 0,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 1,
+                "numOfBlocks": 40,
+                "size": {
+                    "x": 2,
+                    "y": 2
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 1,
+                "numOfBlocks": 40,
+                "size": {
+                    "x": 2,
+                    "y": 2
+                }
+            },
+            {
+                "color": 1,
+                "typeBlock": 0,
+                "numOfBlocks": 4,
+                "size": {
+                    "x": 1,
+                    "y": 1
+                }
+            }
+        ]
+    },
+    "shooter": {
+        "totalShooters": 6,
+        "shootersInRow": 3,
+        "valueShooters": [
+            {
+                "color": 1,
+                "typeShooter": 2,
+                "numOfBullet": 20,
+                "valueShooterLink": {
+                    "index": 1,
+                    "order": 0
+                }
+            },
+            {
+                "color": 1,
+                "typeShooter": 2,
+                "numOfBullet": 20,
+                "valueShooterLink": {
+                    "index": 1,
+                    "order": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeShooter": 1,
+                "numOfBullet": 40
+            },
+            {
+                "color": 1,
+                "typeShooter": 2,
+                "numOfBullet": 20,
+                "valueShooterLink": {
+                    "index": 0,
+                    "order": 0
+                }
+            },
+            {
+                "color": 1,
+                "typeShooter": 2,
+                "numOfBullet": 20,
+                "valueShooterLink": {
+                    "index": 0,
+                    "order": 1
+                }
+            },
+            {
+                "color": 1,
+                "typeShooter": 3,
+                "numOfBullet": 12
+            },
+            {
+                "color": 0,
+                "typeShooter": 1,
+                "numOfBullet": 20
+            },
+            {
+                "color": 0,
+                "typeShooter": 1,
+                "numOfBullet": 10
+            }
+        ]
+    },
+    "slot": {
+        "totalSlot": 5
+    }
+}

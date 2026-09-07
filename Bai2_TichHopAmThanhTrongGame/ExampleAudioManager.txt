@@ -1,0 +1,256 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public enum TriggerSound { ClickUI, ClickDialog, ClickGame, NextLevel, Win, Fail, GainReward };
+
+public class AudioManager : MonoBehaviour
+{
+    public static AudioManager instance;
+    [Header("Audio Clip Background")]
+    public AudioClip[] backgroundHome;
+    public AudioClip[] backgroundHaDong;
+    public AudioClip[] backgroundHQV;
+    public AudioClip[] backgroundNgocTruc;
+    
+
+    [Header("Audio Clip SFX")]
+    public AudioClip clickUISound;
+    public AudioClip clickConservationSound;
+    public AudioClip clickGameSound;
+    public AudioClip nextLevelSound;
+    public AudioClip winSound;
+    public AudioClip failSound;
+    public AudioClip gainRewardSound;
+
+    [Header("Vollume Settings")]
+    [Range(0.0f, 1.0f)]
+    public float backgroundVollume = 1f;
+    float backgroundChangeTime = 0f;
+    [Range(0.0f, 1.0f)]
+    public float triggerVollume = 1f;
+
+    [Header("Audio Source")]
+    public AudioMixer mixer;
+    public AudioSource ambientSource;
+    public AudioSource triggerSource;
+    public AudioSource triggerNotDunkSource;
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            SceneManager.sceneLoaded += (scene, mode) =>
+            {
+                PlayBackgroundAmbient();
+
+            };
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+        //
+
+ 
+    }
+
+    private void Start()
+    {
+        UpdateVolume();
+    }
+
+    private void Update()
+    {
+        if(ambientSource.isPlaying && backgroundChangeTime > 0)
+        {
+            backgroundChangeTime -= Time.deltaTime;
+            if(backgroundChangeTime < 0)
+            {
+                PlayBackgroundAmbient();
+            }    
+        }
+        //
+        // Detect a click or touch event
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Check if the click occurred over a valid UI element
+            if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
+            {
+                GameObject selected = EventSystem.current.currentSelectedGameObject;
+
+                // Verify if the selected object contains a Button component
+                Button button = selected.GetComponent<Button>();
+                Toggle toggle = selected.GetComponent<Toggle>();
+                if ((button != null && button.interactable) || (toggle != null && toggle.interactable))
+                {
+                    Debug.Log($"Button clicked: {selected.name}");
+                    switch(selected.tag)
+                    {
+                        case "DialogBtn":
+                            PlayTriggerSound(TriggerSound.ClickDialog, false);
+                            break;
+
+                        case "GameBtn":
+                            PlayTriggerSound(TriggerSound.ClickGame, false);
+                            break;
+
+                        default:
+                            PlayTriggerSound(TriggerSound.ClickUI, false);
+                            break;
+                    }
+                   
+                }
+            }
+        }
+    }
+
+    public void UpdateVolume()
+    {
+        //ambientSource.volume = backgroundVollume;
+        //triggerSource.volume = triggerVollume;
+        backgroundVollume = PlayerPrefs.GetInt("music_vollume", 1);
+        triggerVollume = PlayerPrefs.GetInt("sfx_vollume", 1);
+        //
+        mixer.SetFloat("MusicVollume", Mathf.Lerp(-80, 0, backgroundVollume));
+        mixer.SetFloat("SoundVollume", Mathf.Lerp(-80, 0, triggerVollume));
+        //
+        PlayBackgroundAmbient();
+    }
+
+    AudioClip SelectAmbientClip()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        switch(sceneName)
+        {
+            case "Ha Dong - Day":
+                return SelectARandomAudio(backgroundHaDong);
+
+            case "Hoang Quoc Viet":
+                return SelectARandomAudio(backgroundHQV);
+
+            case "Ngoc Truc":
+                return SelectARandomAudio(backgroundNgocTruc);
+
+            default:
+                return SelectARandomAudio(backgroundHome);
+
+        }
+    }
+
+    AudioClip SelectARandomAudio(AudioClip[] clips)
+    {
+        if(clips.Length == 0) return null;
+
+        int rand = Random.Range(0, clips.Length);
+        return clips[rand];
+    }    
+
+    public void PlayCorrectSound()
+    {
+        triggerSource.loop = false;
+        triggerSource.volume = triggerVollume;
+        if (!triggerSource.isPlaying)
+        {
+            //triggerSource.clip = correctSound;
+            triggerSource.Play();
+        }
+    }
+
+    public void PlayTriggerSound(TriggerSound sound, bool isDunk = true)
+    {
+        AudioSource source = isDunk? triggerSource: triggerNotDunkSource;
+
+        source.loop = false;
+        source.volume = triggerVollume;
+        if (!source.isPlaying)
+        {
+            switch(sound)
+            {
+                case TriggerSound.ClickUI:
+                    source.clip = clickUISound;
+                    break;
+
+                case TriggerSound.ClickDialog:
+                    source.clip = clickConservationSound;
+                    break;
+
+                case TriggerSound.ClickGame:
+                    source.clip = clickGameSound;
+                    break;
+
+                case TriggerSound.NextLevel:
+                    source.clip = nextLevelSound;
+                    break;
+
+                case TriggerSound.Win:
+                    source.clip = winSound;
+                    break;
+
+                case TriggerSound.Fail:
+                    source.clip = failSound;
+                    break;
+
+                case TriggerSound.GainReward:
+                    source.clip = gainRewardSound;
+                    break;
+            }
+            //triggerSource.clip = correctSound;
+            source.Play();
+        }
+    }
+
+    public void PlayBackgroundAmbient()
+    {
+        AudioClip clip = SelectAmbientClip();
+        backgroundChangeTime = Random.Range(0.3f * clip.length, 0.8f * clip.length);
+        ambientSource.loop = true;
+        StartCoroutine(ChangeAudioClip(ambientSource, clip, backgroundVollume, 1f, 1f));
+    }
+
+    //public void PlayVictoryBackgroundAmbient()
+    //{
+    //    if (ambientSource.clip == ambientWinSound) return;
+
+    //    ambientSource.loop = true;
+    //    StartCoroutine(ChangeAudioClip(ambientSource, ambientWinSound, backgroundVollume, 1f, 1f));
+    //}
+
+    IEnumerator ChangeAudioClip(AudioSource source, AudioClip targetClip, float maxVollume, float fadeOutTime, float fadeInTime)
+    {
+        fadeInTime += 0.01f;
+        fadeOutTime += 0.01f;
+        //
+        float timer = 0;
+        //fade out
+        while (timer < fadeOutTime)
+        {
+            timer += Time.deltaTime;
+            float percentage = Mathf.Clamp01(timer / fadeOutTime);
+            source.volume = (1 - percentage) * maxVollume;
+            yield return new WaitForEndOfFrame();
+        }
+
+        //change source
+        source.Stop();
+        source.clip = targetClip;
+        source.Play();
+
+        //fade in
+        timer = 0;
+        while (timer < fadeInTime)
+        {
+            timer += Time.deltaTime;
+            float percentage = Mathf.Clamp01(timer / fadeInTime);
+            source.volume = percentage * maxVollume;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+}
