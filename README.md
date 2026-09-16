@@ -1,4 +1,4 @@
-# 📘 LapTrinhDoHoaGame
+# 📘 LapTrinhAmThanh
 
 Repository lưu trữ **slide bài giảng, tài liệu và mã nguồn** phục vụ cho việc học tập và giảng dạy môn **Lập trình âm thanh**.
 
